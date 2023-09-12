@@ -26,6 +26,8 @@ const cards = [
 ];
 
 const memoryGame = new MemoryGame(cards);
+let waiting = false
+let cardsFlipped = []
 
 window.addEventListener('load', (event) => {
   let html = '';
@@ -45,7 +47,16 @@ window.addEventListener('load', (event) => {
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('click', () => {
       // TODO: write some code here
-      console.log(`Card clicked: ${card}`);
+      let cardName = card.getAttribute('data-card-name')
+      cardsFlipped.push(cardName)
+      if(waiting === false){
+        card.classList.add('turned')
+      }
+      if(cardsFlipped.length === 2){
+        waiting = true
+      }
+
+      console.log(`Card clicked: ${cardName}`);
     });
   });
 });
