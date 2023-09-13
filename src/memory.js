@@ -24,7 +24,7 @@ class MemoryGame {
 
   checkIfFinished() {
     // ... write your code here
-    if(this.pairsGuessed === 8){
+    if(this.pairsGuessed === 12){
       return true
     }else{
       return false
