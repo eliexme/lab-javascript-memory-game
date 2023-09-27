@@ -9,6 +9,17 @@ class MemoryGame {
 
   shuffleCards() {
     // ... write your code here
+    if(this.cards){
+      const copyCards = [...this.cards]
+    const shuffled = []
+    for(let i=0; i<copyCards.length; i++){
+      let randomIndex = Math.floor(Math.random() * copyCards.length)
+      shuffled.push(copyCards[randomIndex])
+      copyCards.splice(randomIndex, 1)
+    }
+    this.cards = shuffled
+    }else return
+    
   }
 
   checkIfPair(card1, card2) {
@@ -24,7 +35,7 @@ class MemoryGame {
 
   checkIfFinished() {
     // ... write your code here
-    if(this.pairsGuessed === 12){
+    if(this.pairsGuessed === this.cards.length/2){
       return true
     }else{
       return false
